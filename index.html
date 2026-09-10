@@ -1,0 +1,1799 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>HB Fitness — Real Fitness Coaching</title>
+    <style>
+      :root {
+        --bg: #f5f6f2;
+        --card: #fff;
+        --ink: #111411;
+        --muted: #687069;
+        --green: #214c3a;
+        --soft: #e1ebe4;
+        --line: #e3e7e2;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family:
+          Inter,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+        line-height: 1.5;
+        overflow-x: hidden;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      .container {
+        width: min(1080px, calc(100% - 40px));
+        margin: auto;
+      }
+      nav {
+        height: 74px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .logo {
+        font-size: 20px;
+        font-weight: 900;
+        letter-spacing: -0.05em;
+      }
+      .nav {
+        font-size: 14px;
+        font-weight: 800;
+        padding: 10px 16px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: #fff;
+      }
+      .hero {
+        padding: 52px 0 68px;
+      }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr 0.9fr;
+        gap: 48px;
+        align-items: center;
+      }
+      .eyebrow,
+      .kicker {
+        font-size: 11px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--green);
+      }
+      .eyebrow {
+        display: inline-block;
+        padding: 7px 11px;
+        border-radius: 999px;
+        background: var(--soft);
+      }
+      h1 {
+        font-size: clamp(40px, 5.5vw, 68px);
+        line-height: 0.95;
+        letter-spacing: -0.065em;
+        margin: 19px 0 22px;
+      }
+      h1 em {
+        font-style: normal;
+        color: var(--green);
+      }
+      .hero p {
+        font-size: 17.5px;
+        color: var(--muted);
+        max-width: 560px;
+      }
+      .ctas {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      .btn {
+        padding: 14px 20px;
+        border-radius: 12px;
+        font-size: 14px;
+        font-weight: 850;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .dark {
+        background: var(--ink);
+        color: #fff;
+      }
+      .light {
+        background: #fff;
+        border: 1px solid var(--line);
+      }
+
+      /* HERO PHOTO FEATURE BOX */
+      .hero-photo-box {
+        position: relative;
+        width: 100%;
+        height: 440px;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--line);
+        background: #e4e9e4;
+      }
+      .insta-logo {
+        position: absolute;
+        height: 50px;
+        /* background-color: rebeccapurple; */
+        width: 50px;
+        top: 10px;
+        right: 2%;
+        border-radius: 10px;
+      }
+      .insta-logo a img {
+        height: 100%;
+      }
+
+      .hero-photo-box img {
+        width: 100%;
+
+        object-fit: cover;
+        display: block;
+      }
+
+      .hero-photo-overlay {
+        position: absolute;
+        bottom: 18px;
+        left: 18px;
+        right: 18px;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(8px);
+        border: 1px solid var(--line);
+        padding: 12px 16px;
+        border-radius: 14px;
+      }
+
+      .hero-photo-badge {
+        display: inline-block;
+        font-size: 9.5px;
+        font-weight: 900;
+        color: var(--green);
+        background: var(--soft);
+        padding: 3px 8px;
+        border-radius: 6px;
+        margin-bottom: 3px;
+        letter-spacing: 0.06em;
+      }
+
+      .hero-photo-overlay strong {
+        display: block;
+        font-size: 15px;
+        color: var(--ink);
+      }
+
+      /* =========================================================
+         STANDALONE JOURNEY SLIDER WITH CENTER-HIGHLIGHTED CARD
+         ========================================================= */
+      .standalone-journey-section {
+        background: linear-gradient(180deg, var(--bg) 0%, #ebf1ec 100%);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 72px 0;
+        overflow: hidden;
+      }
+
+      .journey-header-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 24px;
+      }
+
+      .journey-slider-controls {
+        display: flex;
+        gap: 10px;
+      }
+
+      .j-nav-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        transition: all 0.2s ease;
+      }
+
+      .j-nav-btn:hover {
+        background: var(--green);
+        color: #fff;
+        border-color: var(--green);
+      }
+
+      .journey-carousel-viewport {
+        overflow: hidden;
+        width: 100%;
+        padding: 20px 0;
+      }
+
+      .journey-carousel-track {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+        will-change: transform;
+      }
+
+      .journey-slide-card {
+        flex: 0 0 280px;
+        width: 280px;
+        height: 370px;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        background: #111411;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        transform: scale(0.92);
+        opacity: 0.65;
+        filter: grayscale(25%);
+        transition:
+          transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+          opacity 0.45s ease,
+          filter 0.45s ease,
+          border-color 0.3s,
+          box-shadow 0.3s;
+        cursor: pointer;
+      }
+
+      /* Center Highlighted Active Card */
+      .journey-slide-card.center-active {
+        transform: scale(1.06);
+        opacity: 1;
+        filter: grayscale(0%);
+        border: 2px solid var(--green);
+        box-shadow: 0 16px 36px rgba(33, 76, 58, 0.28);
+      }
+
+      .j-bg-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 1;
+        transition: transform 0.4s ease;
+      }
+
+      .journey-slide-card:hover .j-bg-img {
+        transform: scale(1.05);
+      }
+
+      .j-gradient-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(10, 14, 11, 0.95) 0%,
+          rgba(10, 14, 11, 0.55) 45%,
+          rgba(10, 14, 11, 0.1) 100%
+        );
+        z-index: 2;
+      }
+
+      .j-card-content {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+        padding: 18px;
+        color: #ffffff;
+      }
+
+      .j-card-date {
+        font-size: 13px;
+        font-weight: 900;
+        letter-spacing: 0.09em;
+        color: #64d9a4;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+      }
+
+      .j-card-desc {
+        font-size: 12px;
+        line-height: 1.4;
+        color: #e3e8e4;
+        margin: 0;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+      }
+
+      .journey-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 22px;
+      }
+
+      .journey-dots .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: none;
+        background: #c5cdc6;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .journey-dots .dot.active {
+        width: 22px;
+        border-radius: 999px;
+        background: var(--green);
+      }
+
+      /* =========================================================
+         SECTION & CARD COMMON STYLES
+         ========================================================= */
+      section {
+        padding: 72px 0;
+      }
+      .head {
+        max-width: 650px;
+        margin-bottom: 30px;
+      }
+      .head h2,
+      .darkbox h2 {
+        font-size: clamp(32px, 4.2vw, 48px);
+        line-height: 1.02;
+        letter-spacing: -0.055em;
+        margin-top: 9px;
+      }
+      .lead {
+        color: var(--muted);
+        margin-top: 12px;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 13px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 23px;
+      }
+      .num {
+        font-size: 11px;
+        font-weight: 900;
+        color: var(--green);
+      }
+      .card h3 {
+        font-size: 19px;
+        margin: 31px 0 7px;
+      }
+      .card p {
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .darkbox {
+        background: var(--ink);
+        color: #fff;
+        border-radius: 28px;
+        padding: 48px;
+      }
+      .darkbox .lead {
+        color: #b9c0bb;
+        max-width: 670px;
+      }
+      .beliefs {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 28px;
+      }
+      .belief {
+        border: 1px solid #303630;
+        background: #1b201d;
+        border-radius: 13px;
+        padding: 16px;
+        font-size: 14px;
+      }
+      .belief b {
+        display: block;
+      }
+      .belief span {
+        color: #aeb6b0;
+      }
+      .offer {
+        display: grid;
+        grid-template-columns: 1fr 0.7fr;
+        gap: 16px;
+      }
+      .offer > div {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        padding: 28px;
+      }
+      .offer h3 {
+        font-size: 27px;
+      }
+      .offer ul {
+        list-style: none;
+        margin-top: 18px;
+      }
+      .offer li {
+        padding: 11px 0;
+        border-bottom: 1px solid var(--line);
+        font-size: 14px;
+      }
+      .offer li:before {
+        content: "✓";
+        color: var(--green);
+        font-weight: 900;
+        margin-right: 10px;
+      }
+      .outcome {
+        background: var(--green) !important;
+        color: #fff;
+      }
+      .outcome p {
+        color: #d4e0d8;
+        font-size: 14px;
+        margin-top: 9px;
+      }
+      .outcome .btn {
+        background: #fff;
+        color: var(--ink);
+        width: 100%;
+        margin-top: 24px;
+      }
+
+      /* =========================================================
+         COMPACT CLIENT REVIEW & BEFORE-AFTER SLIDER SECTION
+         ========================================================= */
+      .reviews-section {
+        background: #ffffff;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        padding: 64px 0;
+      }
+
+      .compact-reviews-container {
+        position: relative;
+      }
+
+      .compact-reviews-header-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 22px;
+      }
+
+      .reviews-nav-controls {
+        display: flex;
+        gap: 10px;
+      }
+
+      .review-nav-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        flex-shrink: 0;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        transition: all 0.2s ease;
+      }
+
+      .review-nav-btn:hover {
+        background: var(--green);
+        color: #fff;
+        border-color: var(--green);
+      }
+
+      .reviews-viewport {
+        overflow: hidden;
+        width: 100%;
+        border-radius: 20px;
+      }
+
+      .reviews-track {
+        display: flex;
+        transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+        gap: 16px;
+      }
+
+      .compact-review-card {
+        flex: 0 0 calc(33.333% - 11px);
+        min-width: calc(33.333% - 11px);
+        background: var(--bg);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.02);
+      }
+
+      .before-after-compact {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 6px;
+        align-items: center;
+        background: #fff;
+        border-radius: 12px;
+        padding: 8px;
+        border: 1px dashed var(--line);
+      }
+
+      .ba-photo-box {
+        height: 120px;
+        background: #f7f9f7;
+        border: 1.5px dashed #b4beb6;
+        border-radius: 8px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #7a837c;
+        overflow: hidden;
+        transition: border-color 0.2s;
+      }
+
+      .ba-photo-box:hover {
+        border-color: var(--green);
+      }
+
+      .ba-badge {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        font-size: 8.5px;
+        font-weight: 900;
+        padding: 2px 5px;
+        border-radius: 4px;
+        background: #e1ebe4;
+        color: var(--green);
+        letter-spacing: 0.05em;
+        z-index: 2;
+      }
+
+      .ba-badge.success {
+        background: var(--green);
+        color: #fff;
+      }
+
+      .ba-placeholder-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3px;
+      }
+
+      .ba-placeholder-content svg {
+        width: 20px;
+        height: 20px;
+        stroke: #7a837c;
+      }
+
+      .ba-placeholder-content span {
+        font-size: 10px;
+        font-weight: 700;
+        color: #687069;
+      }
+
+      .ba-placeholder-content small {
+        font-size: 8.5px;
+        color: #8f9890;
+      }
+
+      .ba-divider {
+        font-size: 9px;
+        font-weight: 900;
+        color: var(--green);
+        background: var(--soft);
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .compact-review-content {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .compact-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .compact-tag {
+        font-size: 10.5px;
+        font-weight: 800;
+        color: var(--green);
+        background: var(--soft);
+        padding: 3px 7px;
+        border-radius: 6px;
+      }
+
+      .stars {
+        color: #f59e0b;
+        letter-spacing: 1px;
+        font-size: 11px;
+      }
+
+      .compact-quote {
+        font-size: 12.5px;
+        color: var(--ink);
+        line-height: 1.35;
+        font-style: italic;
+      }
+
+      .compact-client-info {
+        display: flex;
+        flex-direction: column;
+        margin-top: 2px;
+      }
+
+      .compact-client-info strong {
+        font-size: 12px;
+        color: var(--ink);
+      }
+
+      .compact-client-info span {
+        font-size: 10px;
+        color: var(--muted);
+      }
+
+      .review-dots {
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        margin-top: 18px;
+      }
+
+      .review-dots .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        border: none;
+        background: #c5cdc6;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .review-dots .dot.active {
+        width: 22px;
+        border-radius: 999px;
+        background: var(--green);
+      }
+
+      /* =========================================================
+         FAQ & FOOTER STYLES
+         ========================================================= */
+      .faq {
+        display: grid;
+        gap: 9px;
+        max-width: 800px;
+      }
+      details {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        padding: 17px 19px;
+      }
+      summary {
+        font-size: 14px;
+        font-weight: 800;
+        cursor: pointer;
+      }
+      details p {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 10px;
+      }
+      .final {
+        padding: 25px 0 82px;
+      }
+      .finalbox {
+        text-align: center;
+        background: var(--green);
+        color: #fff;
+        border-radius: 26px;
+        padding: 54px 25px;
+      }
+      .finalbox h2 {
+        max-width: 650px;
+        margin: auto;
+        font-size: clamp(34px, 4.5vw, 48px);
+        line-height: 1.02;
+        letter-spacing: -0.055em;
+      }
+      .finalbox p {
+        color: #d3dfd7;
+        max-width: 550px;
+        margin: 13px auto 24px;
+      }
+      .finalbox .btn {
+        background: #fff;
+        color: var(--ink);
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 25px 0 40px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      /* RESPONSIVE BREAKPOINTS */
+      @media (max-width: 1024px) {
+        .compact-review-card {
+          flex: 0 0 calc(50% - 8px);
+          min-width: calc(50% - 8px);
+        }
+      }
+
+      @media (max-width: 820px) {
+        .hero-grid,
+        .offer {
+          grid-template-columns: 1fr;
+        }
+        .hero-photo-box {
+          height: auto;
+          max-height: 500px;
+        }
+        .cards {
+          grid-template-columns: 1fr;
+        }
+        .beliefs {
+          grid-template-columns: 1fr;
+        }
+        .darkbox {
+          padding: 30px;
+        }
+        .journey-slide-card {
+          flex: 0 0 240px;
+          width: 240px;
+          height: 330px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .compact-review-card {
+          flex: 0 0 100%;
+          min-width: 100%;
+        }
+        .compact-reviews-header-bar,
+        .journey-header-bar {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .container {
+          width: calc(100% - 28px);
+        }
+        h1 {
+          font-size: 42px;
+        }
+        .hero {
+          padding-top: 24px;
+        }
+        .hero p {
+          font-size: 15.5px;
+        }
+        section {
+          padding: 50px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">BE ORIGINAL</div>
+          <a class="nav" href="#apply">Start coaching →</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <span class="eyebrow">Personal 1:1 fitness coaching</span>
+            <h1>
+              I built myself.<br />Now I'll help you
+              <em> build yourself.</em>
+            </h1>
+            <p>
+              I spent years training, learning and figuring out what actually
+              works. My approach is simple: smart training, practical nutrition
+              and consistency — without turning fitness into your entire life.
+            </p>
+            <div class="ctas">
+              <a class="btn dark" href="#apply">Apply for 1:1 coaching</a>
+              <a class="btn light" href="#why">Why my approach?</a>
+            </div>
+          </div>
+
+          <!-- HERO PHOTO FEATURE -->
+          <div class="hero-photo-box">
+            <div class="insta-logo">
+              <a href="https://www.instagram.com/befit_hb/" target="_blank">
+                <img src="./instagram.png" alt="" />
+              </a>
+            </div>
+            <img src="IMG_7529.jpg" alt="Harshit Bhardwaj — Founder & Coach" />
+            <div class="hero-photo-overlay">
+              <span class="hero-photo-badge">FOUNDER & 1:1 COACH</span>
+              <strong>HARSHIT BHARDWAJ</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY LEARN FROM ME -->
+      <section id="why">
+        <div class="container">
+          <div class="head">
+            <div class="kicker">Why learn from me?</div>
+            <h2>Not another guy giving you a workout PDF.</h2>
+            <p class="lead">
+              I don't just give you a plan. I'll teach you how to train, eat and
+              make better fitness decisions yourself.
+            </p>
+          </div>
+          <div class="cards">
+            <div class="card">
+              <div class="num">01</div>
+              <h3>I practice what I teach.</h3>
+              <p>
+                Training, physique development and progressive improvement are
+                things I actively work on myself.
+              </p>
+            </div>
+            <div class="card">
+              <div class="num">02</div>
+              <h3>I teach the “why”.</h3>
+              <p>
+                Understand exercise selection, effort, progression and
+                adjustments instead of blindly following a routine.
+              </p>
+            </div>
+            <div class="card">
+              <div class="num">03</div>
+              <h3>Fitness fits your life.</h3>
+              <p>
+                No crash diets or unrealistic routines. Your plan should work
+                with your schedule and lifestyle.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- STANDALONE JOURNEY SLIDER SECTION (CENTER-HIGHLIGHTED CARDS) -->
+      <section id="journey" class="standalone-journey-section">
+        <div class="container">
+          <div class="journey-header-bar">
+            <div class="head" style="margin-bottom: 0">
+              <div class="kicker">MY PERSONAL EVOLUTION</div>
+              <h2>The Journey Behind the Method</h2>
+              <p class="lead" style="margin-top: 6px">
+                Real progress takes time. Scroll through the milestones of my
+                personal transformation.
+              </p>
+            </div>
+            <div class="journey-slider-controls">
+              <button
+                class="j-nav-btn"
+                id="jPrev"
+                aria-label="Previous milestone"
+              >
+                ‹
+              </button>
+              <button class="j-nav-btn" id="jNext" aria-label="Next milestone">
+                ›
+              </button>
+            </div>
+          </div>
+
+          <div class="journey-carousel-viewport">
+            <div class="journey-carousel-track" id="journeyCarouselTrack">
+              <!-- Slide 1 -->
+              <div class="journey-slide-card center-active">
+                <img
+                  class="j-bg-img"
+                  src="IMG_7519.jpg"
+                  alt="Journey photo 1"
+                />
+                <div class="j-gradient-overlay"></div>
+                <div class="j-card-content">
+                  <div class="j-card-date">AUG 2020</div>
+                  <p class="j-card-desc">
+                    Just a normal boy who though that he should join gym.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 2 -->
+              <div class="journey-slide-card">
+                <img
+                  class="j-bg-img"
+                  src="IMG_7520.jpg"
+                  alt="Journey photo 2"
+                />
+                <div class="j-gradient-overlay"></div>
+                <div class="j-card-content">
+                  <div class="j-card-date">APR 2022</div>
+                  <p class="j-card-desc">
+                    Finally took that decision and that's my first day.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 3 -->
+              <div class="journey-slide-card">
+                <img
+                  class="j-bg-img"
+                  src="IMG_7521.jpg"
+                  alt="Journey photo 3"
+                />
+                <div class="j-gradient-overlay"></div>
+                <div class="j-card-content">
+                  <div class="j-card-date">NOV 2022</div>
+                  <p class="j-card-desc">
+                    Some results started coming in. And to be honest more then
+                    results. I Gained confidence.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 4 -->
+              <div class="journey-slide-card">
+                <img
+                  class="j-bg-img"
+                  src="IMG_7522.jpg"
+                  alt="Journey photo 4"
+                />
+                <div class="j-gradient-overlay"></div>
+                <div class="j-card-content">
+                  <div class="j-card-date">APR 2023</div>
+                  <p class="j-card-desc">
+                    Keeping the work in. Don't know what was and what was right
+                    just doing it.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 5 -->
+              <div class="journey-slide-card">
+                <img
+                  class="j-bg-img"
+                  src="IMG_7523.jpg"
+                  alt="Journey photo 5"
+                />
+                <div class="j-gradient-overlay"></div>
+                <div class="j-card-content">
+                  <div class="j-card-date">JAN 2024</div>
+                  <p class="j-card-desc">
+                    Gained more knowledge and started seeing much better
+                    results.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 6 -->
+              <div class="journey-slide-card">
+                <img
+                  class="j-bg-img"
+                  src="IMG_7524.jpg"
+                  alt="Journey photo 6"
+                />
+                <div class="j-gradient-overlay"></div>
+                <div class="j-card-content">
+                  <div class="j-card-date">JUN 2025</div>
+                  <p class="j-card-desc">
+                    My Peak Bulk, I was literally feeling like a HULK, My lifts
+                    were off the charts.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 7 -->
+              <div class="journey-slide-card">
+                <img
+                  class="j-bg-img"
+                  src="IMG_7525.jpg"
+                  alt="Journey photo 7"
+                />
+                <div class="j-gradient-overlay"></div>
+                <div class="j-card-content">
+                  <div class="j-card-date">JUL 2025</div>
+                  <p class="j-card-desc">
+                    Still in Bulk but I kinda sacrificed my looks due to weight.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 8 -->
+              <div class="journey-slide-card">
+                <img
+                  class="j-bg-img"
+                  src="IMG_7526.jpg"
+                  alt="Journey photo 8"
+                />
+                <div class="j-gradient-overlay"></div>
+                <div class="j-card-content">
+                  <div class="j-card-date">JUL 2026</div>
+                  <p class="j-card-desc">
+                    One of best comebacks, I became leaner and much healthier.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 9 -->
+              <div class="journey-slide-card">
+                <img
+                  class="j-bg-img"
+                  src="IMG_7527.jpg"
+                  alt="Journey photo 9"
+                />
+                <div class="j-gradient-overlay"></div>
+                <div class="j-card-content">
+                  <div class="j-card-date">AUG 2025</div>
+                  <p class="j-card-desc">
+                    Current looks and physique, That's much better then being a
+                    HULK, As I can move however I want.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 10 -->
+              <div class="journey-slide-card">
+                <img
+                  class="j-bg-img"
+                  src="IMG_7528.jpg"
+                  alt="Journey photo 10"
+                />
+                <div class="j-gradient-overlay"></div>
+                <div class="j-card-content">
+                  <div class="j-card-date">AUG 2026</div>
+                  <p class="j-card-desc">
+                    The good part about this current physique , I can still lift
+                    heavy and move much better.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Slide 11 -->
+              <div class="journey-slide-card">
+                <img
+                  class="j-bg-img"
+                  src="IMG_7529.jpg"
+                  alt="Journey photo 11"
+                />
+                <div class="j-gradient-overlay"></div>
+                <div class="j-card-content">
+                  <div class="j-card-date">PRESENT</div>
+                  <p class="j-card-desc">
+                    Took the decision to share my knowledge with others who
+                    needs it.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="journey-dots" id="journeyDots"></div>
+        </div>
+      </section>
+
+      <!-- MY PHILOSOPHY -->
+      <section>
+        <div class="container">
+          <div class="darkbox">
+            <div class="kicker" style="color: #d5e4da">My philosophy</div>
+            <h2>
+              Supplements are just a booster not something you should rely on.
+            </h2>
+            <p class="lead">
+              There is a difference between discipline and making fitness
+              unnecessarily complicated. Build a strong body, understand what
+              you're doing and learn how to maintain it.
+            </p>
+            <div class="beliefs">
+              <div class="belief">
+                <b>No extreme diets.</b>
+                <span>Learn calories, protein, portions and flexibility.</span>
+              </div>
+              <div class="belief">
+                <b>No random workouts.</b>
+                <span>Every part of your training has a reason.</span>
+              </div>
+              <div class="belief">
+                <b>No supplement obsession.</b>
+                <span>Build the basics before worrying about extras.</span>
+              </div>
+              <div class="belief">
+                <b>No transformation BS.</b>
+                <span>Build something you can actually maintain.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT YOU GET -->
+      <section>
+        <div class="container">
+          <div class="head">
+            <div class="kicker">What you get</div>
+            <h2>A system built around you.</h2>
+            <p class="lead">
+              Everything starts with where you are and where you want to go.
+            </p>
+          </div>
+          <div class="offer">
+            <div>
+              <h3>1:1 Personal Fitness Coaching</h3>
+              <ul>
+                <li>Personalized training plan</li>
+                <li>Practical nutrition guidance</li>
+                <li>Weekly check-ins & progress tracking</li>
+                <li>Exercise and form feedback</li>
+                <li>Adjustments based on real progress</li>
+                <li>Fitness education — so you understand what you're doing</li>
+              </ul>
+            </div>
+            <div class="outcome">
+              <div class="kicker" style="color: #d5e4da">The outcome</div>
+              <h3>Get fit. Get strong. Learn how to stay that way.</h3>
+              <p>
+                Coaching designed to give you both the plan and the knowledge
+                behind it.
+              </p>
+              <p class="free-call">
+                🎉Free for first 10 clients. Grab the knowledge.
+              </p>
+              <a class="btn" href="#apply">Book a demo call</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COMPACT CLIENT REVIEWS & BEFORE-AFTER SLIDER SECTION -->
+      <section id="reviews" class="reviews-section">
+        <div class="container compact-reviews-container">
+          <div class="compact-reviews-header-bar">
+            <div class="head" style="margin-bottom: 0">
+              <div class="kicker">Client Transformations & Reviews</div>
+              <h2>Real people. Real results.</h2>
+              <p class="lead" style="margin-top: 6px">
+                Compact progress track and reviews from 1:1 coaching clients.
+              </p>
+            </div>
+            <div class="reviews-nav-controls">
+              <button
+                class="review-nav-btn"
+                id="prevReview"
+                aria-label="Previous Review"
+              >
+                ‹
+              </button>
+              <button
+                class="review-nav-btn"
+                id="nextReview"
+                aria-label="Next Review"
+              >
+                ›
+              </button>
+            </div>
+          </div>
+
+          <div class="reviews-viewport">
+            <div class="reviews-track" id="reviewsTrack">
+              <!-- Compact Review Card 1 -->
+              <div class="compact-review-card">
+                <div class="before-after-compact">
+                  <div class="ba-photo-box">
+                    <span class="ba-badge">BEFORE</span>
+                    <div class="ba-placeholder-content">
+                      <svg
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                      <span>Before Photo</span>
+                      <small>Add Image</small>
+                    </div>
+                  </div>
+                  <div class="ba-divider">VS</div>
+                  <div class="ba-photo-box">
+                    <span class="ba-badge success">AFTER</span>
+                    <div class="ba-placeholder-content">
+                      <svg
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                      <span>After Photo</span>
+                      <small>Add Image</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="compact-review-content">
+                  <div class="compact-meta">
+                    <span class="compact-tag">12 Weeks • -9 kg Fat Loss</span>
+                    <span class="stars">★★★★★</span>
+                  </div>
+                  <p class="compact-quote">
+                    "Harshit helped me understand nutrition without restrictive
+                    dieting. My strength went up while dropping fat."
+                  </p>
+                  <div class="compact-client-info">
+                    <strong>Rohan M.</strong>
+                    <span>1:1 Coaching Client</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Compact Review Card 2 -->
+              <div class="compact-review-card">
+                <div class="before-after-compact">
+                  <div class="ba-photo-box">
+                    <span class="ba-badge">BEFORE</span>
+                    <div class="ba-placeholder-content">
+                      <svg
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                      <span>Before Photo</span>
+                      <small>Add Image</small>
+                    </div>
+                  </div>
+                  <div class="ba-divider">VS</div>
+                  <div class="ba-photo-box">
+                    <span class="ba-badge success">AFTER</span>
+                    <div class="ba-placeholder-content">
+                      <svg
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                      <span>After Photo</span>
+                      <small>Add Image</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="compact-review-content">
+                  <div class="compact-meta">
+                    <span class="compact-tag">16 Weeks • Lean Muscle Gain</span>
+                    <span class="stars">★★★★★</span>
+                  </div>
+                  <p class="compact-quote">
+                    "Clear workout plans and constant form feedback. Best
+                    decision I made for my overall physique."
+                  </p>
+                  <div class="compact-client-info">
+                    <strong>Karan S.</strong>
+                    <span>1:1 Coaching Client</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Compact Review Card 3 -->
+              <div class="compact-review-card">
+                <div class="before-after-compact">
+                  <div class="ba-photo-box">
+                    <span class="ba-badge">BEFORE</span>
+                    <div class="ba-placeholder-content">
+                      <svg
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                      <span>Before Photo</span>
+                      <small>Add Image</small>
+                    </div>
+                  </div>
+                  <div class="ba-divider">VS</div>
+                  <div class="ba-photo-box">
+                    <span class="ba-badge success">AFTER</span>
+                    <div class="ba-placeholder-content">
+                      <svg
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                      <span>After Photo</span>
+                      <small>Add Image</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="compact-review-content">
+                  <div class="compact-meta">
+                    <span class="compact-tag">24 Weeks • Recomposition</span>
+                    <span class="stars">★★★★★</span>
+                  </div>
+                  <p class="compact-quote">
+                    "Learned proper progression and consistency. The weekly
+                    check-ins kept me on target without stress."
+                  </p>
+                  <div class="compact-client-info">
+                    <strong>Vikram T.</strong>
+                    <span>1:1 Coaching Client</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Compact Review Card 4 -->
+              <div class="compact-review-card">
+                <div class="before-after-compact">
+                  <div class="ba-photo-box">
+                    <span class="ba-badge">BEFORE</span>
+                    <div class="ba-placeholder-content">
+                      <svg
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                      <span>Before Photo</span>
+                      <small>Add Image</small>
+                    </div>
+                  </div>
+                  <div class="ba-divider">VS</div>
+                  <div class="ba-photo-box">
+                    <span class="ba-badge success">AFTER</span>
+                    <div class="ba-placeholder-content">
+                      <svg
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                        />
+                      </svg>
+                      <span>After Photo</span>
+                      <small>Add Image</small>
+                    </div>
+                  </div>
+                </div>
+                <div class="compact-review-content">
+                  <div class="compact-meta">
+                    <span class="compact-tag">10 Weeks • Strength & Tone</span>
+                    <span class="stars">★★★★★</span>
+                  </div>
+                  <p class="compact-quote">
+                    "Simple, logical guidance. No fancy gimmicks, just solid
+                    training principles that deliver."
+                  </p>
+                  <div class="compact-client-info">
+                    <strong>Ankit S.</strong>
+                    <span>1:1 Coaching Client</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-dots" id="reviewDots"></div>
+        </div>
+      </section>
+
+      <!-- THIS IS FOR YOU IF -->
+      <section>
+        <div class="container">
+          <div class="head">
+            <div class="kicker">This is for you if…</div>
+            <h2>You want results, but you're tired of guessing.</h2>
+          </div>
+          <div class="cards">
+            <div class="card">
+              <h3>“I go to the gym, but…”</h3>
+              <p>
+                You're not sure if your workout, exercise selection or
+                progression actually makes sense.
+              </p>
+            </div>
+            <div class="card">
+              <h3>“I need supplements...”</h3>
+              <p>
+                You want a good fitness level in your life but don't want to add
+                external supplements
+              </p>
+            </div>
+            <div class="card">
+              <h3>“There is too much information.”</h3>
+              <p>
+                You've watched hundreds of fitness videos and somehow feel more
+                confused than before.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section>
+        <div class="container">
+          <div class="head">
+            <div class="kicker">How it works</div>
+            <h2>Simple process. Serious execution.</h2>
+          </div>
+          <div class="cards">
+            <div class="card">
+              <div class="num">01</div>
+              <h3>Assess</h3>
+              <p>
+                We understand your goal, current level, schedule, equipment and
+                lifestyle.
+              </p>
+            </div>
+            <div class="card">
+              <div class="num">02</div>
+              <h3>Build</h3>
+              <p>
+                You get a personalized training and nutrition system built
+                around you.
+              </p>
+            </div>
+            <div class="card">
+              <div class="num">03</div>
+              <h3>Adjust</h3>
+              <p>
+                We track what happens, fix what isn't working and keep moving
+                forward.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ SECTION -->
+      <section>
+        <div class="container">
+          <div class="head">
+            <div class="kicker">Questions</div>
+            <h2>Before you start.</h2>
+          </div>
+          <div class="faq">
+            <details>
+              <summary>Do I need to follow a strict diet?</summary>
+              <p>
+                No. The approach focuses on practical nutrition, calories,
+                protein, portions and consistency rather than making your food
+                choices miserable.
+              </p>
+            </details>
+            <details>
+              <summary>Is this only for advanced lifters?</summary>
+              <p>
+                No. Coaching can be built around your current experience,
+                whether you're new to the gym or already training consistently.
+              </p>
+            </details>
+            <details>
+              <summary>Will I get a fixed workout plan?</summary>
+              <p>
+                You'll get a personalized plan, but coaching doesn't stop at
+                sending it. Your training can be adjusted as you progress.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- CALL TO ACTION -->
+      <section class="final" id="apply">
+        <div class="container">
+          <div class="finalbox">
+            <div class="kicker" style="color: #d5e4da">Ready?</div>
+            <h2>Stop guessing. Start training with a plan.</h2>
+            <p>
+              Tell me where you are, where you want to go, and I'll tell you
+              whether I can help.
+            </p>
+            <a
+              class="btn"
+              href="https://wa.me/917048921154?text=Hi%20Harshit%2C%20I%27m%20interested%20in%201%3A1%20fitness%20coaching."
+              >Message me on WhatsApp →</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">© 2026 BE ORIGINAL · Harshit Bhardwaj.</div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+      // 1. STANDALONE JOURNEY SLIDER WITH CENTER-HIGHLIGHTED CARD
+      (function initStandaloneJourneySlider() {
+        const track = document.getElementById("journeyCarouselTrack");
+        const prevBtn = document.getElementById("jPrev");
+        const nextBtn = document.getElementById("jNext");
+        const dotsContainer = document.getElementById("journeyDots");
+        if (!track) return;
+
+        const cards = track.children;
+        const total = cards.length;
+        let activeIndex = 0; // Card in the center position
+
+        function getCardOuterWidth() {
+          const w = window.innerWidth;
+          if (w <= 820) return 240 + 20;
+          return 280 + 20;
+        }
+
+        function updateCarousel() {
+          const cardWidth = window.innerWidth <= 820 ? 240 : 280;
+          const cardOuterWidth = getCardOuterWidth();
+          const viewportWidth = track.parentElement.offsetWidth;
+
+          // Calculate center alignment translation
+          const centerOffset = viewportWidth / 2 - cardWidth / 2;
+          const translateX = centerOffset - activeIndex * cardOuterWidth;
+
+          track.style.transform = `translateX(${translateX}px)`;
+
+          // Highlight center active card
+          Array.from(cards).forEach((card, idx) => {
+            if (idx === activeIndex) {
+              card.classList.add("center-active");
+            } else {
+              card.classList.remove("center-active");
+            }
+          });
+
+          // Render / update dots
+          if (dotsContainer) {
+            dotsContainer.innerHTML = "";
+            for (let i = 0; i < total; i++) {
+              const dot = document.createElement("button");
+              dot.className = `dot ${i === activeIndex ? "active" : ""}`;
+              dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+              dot.addEventListener("click", () => {
+                activeIndex = i;
+                updateCarousel();
+              });
+              dotsContainer.appendChild(dot);
+            }
+          }
+        }
+
+        Array.from(cards).forEach((card, idx) => {
+          card.addEventListener("click", () => {
+            activeIndex = idx;
+            updateCarousel();
+          });
+        });
+
+        if (prevBtn) {
+          prevBtn.addEventListener("click", () => {
+            activeIndex = Math.max(0, activeIndex - 1);
+            updateCarousel();
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener("click", () => {
+            activeIndex = Math.min(total - 1, activeIndex + 1);
+            updateCarousel();
+          });
+        }
+
+        let startX = 0;
+        track.addEventListener(
+          "touchstart",
+          (e) => {
+            startX = e.touches[0].clientX;
+          },
+          { passive: true },
+        );
+
+        track.addEventListener("touchend", (e) => {
+          const dist = e.changedTouches[0].clientX - startX;
+          if (dist < -40 && activeIndex < total - 1) {
+            activeIndex++;
+            updateCarousel();
+          } else if (dist > 40 && activeIndex > 0) {
+            activeIndex--;
+            updateCarousel();
+          }
+        });
+
+        window.addEventListener("resize", updateCarousel);
+        updateCarousel();
+      })();
+
+      // 2. COMPACT CLIENT REVIEW & BEFORE-AFTER SLIDER
+      (function initReviewsSlider() {
+        const track = document.getElementById("reviewsTrack");
+        const prevBtn = document.getElementById("prevReview");
+        const nextBtn = document.getElementById("nextReview");
+        const dotsContainer = document.getElementById("reviewDots");
+        if (!track) return;
+
+        const cards = track.children;
+        const totalCards = cards.length;
+        let currentIndex = 0;
+
+        function getCardsPerView() {
+          const w = window.innerWidth;
+          if (w <= 640) return 1;
+          if (w <= 1024) return 2;
+          return 3;
+        }
+
+        function updateSlider() {
+          const cardsPerView = getCardsPerView();
+          const maxIndex = Math.max(0, totalCards - cardsPerView);
+          if (currentIndex > maxIndex) currentIndex = maxIndex;
+          if (currentIndex < 0) currentIndex = 0;
+
+          const percentage =
+            currentIndex * (100 / cardsPerView + (cardsPerView > 1 ? 1.5 : 0));
+          track.style.transform = `translateX(-${percentage}%)`;
+
+          if (dotsContainer) {
+            dotsContainer.innerHTML = "";
+            const totalDots = totalCards - cardsPerView + 1;
+            for (let i = 0; i < totalDots; i++) {
+              const dot = document.createElement("button");
+              dot.className = `dot ${i === currentIndex ? "active" : ""}`;
+              dot.setAttribute("aria-label", `Go to slide ${i + 1}`);
+              dot.addEventListener("click", () => {
+                currentIndex = i;
+                updateSlider();
+              });
+              dotsContainer.appendChild(dot);
+            }
+          }
+        }
+
+        if (prevBtn) {
+          prevBtn.addEventListener("click", () => {
+            currentIndex = Math.max(0, currentIndex - 1);
+            updateSlider();
+          });
+        }
+
+        if (nextBtn) {
+          nextBtn.addEventListener("click", () => {
+            const cardsPerView = getCardsPerView();
+            const maxIndex = totalCards - cardsPerView;
+            currentIndex = Math.min(maxIndex, currentIndex + 1);
+            updateSlider();
+          });
+        }
+
+        let startX = 0;
+        track.addEventListener(
+          "touchstart",
+          (e) => {
+            startX = e.touches[0].clientX;
+          },
+          { passive: true },
+        );
+
+        track.addEventListener("touchend", (e) => {
+          const dist = e.changedTouches[0].clientX - startX;
+          const cardsPerView = getCardsPerView();
+          if (dist < -40 && currentIndex < totalCards - cardsPerView) {
+            currentIndex++;
+            updateSlider();
+          } else if (dist > 40 && currentIndex > 0) {
+            currentIndex--;
+            updateSlider();
+          }
+        });
+
+        window.addEventListener("resize", updateSlider);
+        updateSlider();
+      })();
+    </script>
+  </body>
+</html>
