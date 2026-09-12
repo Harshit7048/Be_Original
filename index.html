@@ -535,10 +535,17 @@
         transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
         gap: 16px;
       }
+      .review-main-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+      }
 
       .compact-review-card {
-        flex: 0 0 calc(33.333% - 11px);
-        min-width: calc(33.333% - 11px);
+        flex: 0 0 calc(47.333% - 11px);
+        min-width: calc(47.333% - 11px);
         background: var(--bg);
         border: 1px solid var(--line);
         border-radius: 18px;
@@ -561,7 +568,8 @@
       }
 
       .ba-photo-box {
-        height: 120px;
+        height: fit-content;
+        max-height: 290px;
         background: #f7f9f7;
         border: 1.5px dashed #b4beb6;
         border-radius: 8px;
@@ -574,6 +582,10 @@
         color: #7a837c;
         overflow: hidden;
         transition: border-color 0.2s;
+      }
+      .ba-photo-box img {
+        height: 100%;
+        width: 100%;
       }
 
       .ba-photo-box:hover {
@@ -1219,265 +1231,229 @@
                 Compact progress track and reviews from 1:1 coaching clients.
               </p>
             </div>
-            <div class="reviews-nav-controls">
-              <button
-                class="review-nav-btn"
-                id="prevReview"
-                aria-label="Previous Review"
-              >
-                ‹
-              </button>
-              <button
-                class="review-nav-btn"
-                id="nextReview"
-                aria-label="Next Review"
-              >
-                ›
-              </button>
-            </div>
           </div>
 
-          <div class="reviews-viewport">
-            <div class="reviews-track" id="reviewsTrack">
-              <!-- Compact Review Card 1 -->
-              <div class="compact-review-card">
-                <div class="before-after-compact">
-                  <div class="ba-photo-box">
-                    <span class="ba-badge">BEFORE</span>
-                    <div class="ba-placeholder-content">
-                      <svg
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                      <span>Before Photo</span>
-                      <small>Add Image</small>
-                    </div>
-                  </div>
-                  <div class="ba-divider">VS</div>
-                  <div class="ba-photo-box">
-                    <span class="ba-badge success">AFTER</span>
-                    <div class="ba-placeholder-content">
-                      <svg
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                      <span>After Photo</span>
-                      <small>Add Image</small>
-                    </div>
+          <div class="review-main-container">
+            <div class="compact-review-card">
+              <div class="before-after-compact">
+                <div class="ba-photo-box sahil-before">
+                  <span class="ba-badge">BEFORE</span>
+                  <div class="ba-placeholder-content">
+                    <!-- <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                    <span>Before Photo</span>
+                    <small>Add Image</small> -->
+                    <img
+                      src="./WhatsApp Image 2026-09-12 at 12.02.07.jpeg"
+                      alt=""
+                    />
                   </div>
                 </div>
-                <div class="compact-review-content">
-                  <div class="compact-meta">
-                    <span class="compact-tag">12 Weeks • -9 kg Fat Loss</span>
-                    <span class="stars">★★★★★</span>
-                  </div>
-                  <p class="compact-quote">
-                    "Harshit helped me understand nutrition without restrictive
-                    dieting. My strength went up while dropping fat."
-                  </p>
-                  <div class="compact-client-info">
-                    <strong>Rohan M.</strong>
-                    <span>1:1 Coaching Client</span>
+                <div class="ba-divider">VS</div>
+                <div class="ba-photo-box sahil-after">
+                  <span class="ba-badge success">AFTER</span>
+                  <div class="ba-placeholder-content">
+                    <!-- <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                    <span>After Photo</span>
+                    <small>Add Image</small> -->
+                    <img
+                      src="./WhatsApp Image 2026-09-12 at 12.02.08.jpeg"
+                      alt=""
+                    />
                   </div>
                 </div>
               </div>
-
-              <!-- Compact Review Card 2 -->
-              <div class="compact-review-card">
-                <div class="before-after-compact">
-                  <div class="ba-photo-box">
-                    <span class="ba-badge">BEFORE</span>
-                    <div class="ba-placeholder-content">
-                      <svg
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                      <span>Before Photo</span>
-                      <small>Add Image</small>
-                    </div>
-                  </div>
-                  <div class="ba-divider">VS</div>
-                  <div class="ba-photo-box">
-                    <span class="ba-badge success">AFTER</span>
-                    <div class="ba-placeholder-content">
-                      <svg
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                      <span>After Photo</span>
-                      <small>Add Image</small>
-                    </div>
-                  </div>
+              <div class="compact-review-content">
+                <div class="compact-meta">
+                  <span class="compact-tag">12 Weeks • 4kg lean bulk</span>
+                  <span class="stars">★★★★★</span>
                 </div>
-                <div class="compact-review-content">
-                  <div class="compact-meta">
-                    <span class="compact-tag">16 Weeks • Lean Muscle Gain</span>
-                    <span class="stars">★★★★★</span>
-                  </div>
-                  <p class="compact-quote">
-                    "Clear workout plans and constant form feedback. Best
-                    decision I made for my overall physique."
-                  </p>
-                  <div class="compact-client-info">
-                    <strong>Karan S.</strong>
-                    <span>1:1 Coaching Client</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Compact Review Card 3 -->
-              <div class="compact-review-card">
-                <div class="before-after-compact">
-                  <div class="ba-photo-box">
-                    <span class="ba-badge">BEFORE</span>
-                    <div class="ba-placeholder-content">
-                      <svg
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                      <span>Before Photo</span>
-                      <small>Add Image</small>
-                    </div>
-                  </div>
-                  <div class="ba-divider">VS</div>
-                  <div class="ba-photo-box">
-                    <span class="ba-badge success">AFTER</span>
-                    <div class="ba-placeholder-content">
-                      <svg
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                      <span>After Photo</span>
-                      <small>Add Image</small>
-                    </div>
-                  </div>
-                </div>
-                <div class="compact-review-content">
-                  <div class="compact-meta">
-                    <span class="compact-tag">24 Weeks • Recomposition</span>
-                    <span class="stars">★★★★★</span>
-                  </div>
-                  <p class="compact-quote">
-                    "Learned proper progression and consistency. The weekly
-                    check-ins kept me on target without stress."
-                  </p>
-                  <div class="compact-client-info">
-                    <strong>Vikram T.</strong>
-                    <span>1:1 Coaching Client</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Compact Review Card 4 -->
-              <div class="compact-review-card">
-                <div class="before-after-compact">
-                  <div class="ba-photo-box">
-                    <span class="ba-badge">BEFORE</span>
-                    <div class="ba-placeholder-content">
-                      <svg
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                      <span>Before Photo</span>
-                      <small>Add Image</small>
-                    </div>
-                  </div>
-                  <div class="ba-divider">VS</div>
-                  <div class="ba-photo-box">
-                    <span class="ba-badge success">AFTER</span>
-                    <div class="ba-placeholder-content">
-                      <svg
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                        />
-                      </svg>
-                      <span>After Photo</span>
-                      <small>Add Image</small>
-                    </div>
-                  </div>
-                </div>
-                <div class="compact-review-content">
-                  <div class="compact-meta">
-                    <span class="compact-tag">10 Weeks • Strength & Tone</span>
-                    <span class="stars">★★★★★</span>
-                  </div>
-                  <p class="compact-quote">
-                    "Simple, logical guidance. No fancy gimmicks, just solid
-                    training principles that deliver."
-                  </p>
-                  <div class="compact-client-info">
-                    <strong>Ankit S.</strong>
-                    <span>1:1 Coaching Client</span>
-                  </div>
+                <p class="compact-quote">
+                  "Harshit helped me understand nutrition without restrictive
+                  dieting. My strength went up while achieving a clean lean
+                  bulk"
+                </p>
+                <div class="compact-client-info">
+                  <strong>Sahil</strong>
+                  <span>1:1 Coaching Client</span>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div class="review-dots" id="reviewDots"></div>
+            <!-- Compact Review Card 2 -->
+            <div class="compact-review-card">
+              <div class="before-after-compact">
+                <div class="ba-photo-box">
+                  <span class="ba-badge">BEFORE</span>
+                  <div class="ba-placeholder-content">
+                    <!-- <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                    <span>Before Photo</span>
+                    <small>Add Image</small> -->
+                    <img
+                      src="./WhatsApp Image 2026-09-12 at 12.02.08 (1).jpeg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div class="ba-divider">VS</div>
+                <div class="ba-photo-box">
+                  <span class="ba-badge success">AFTER</span>
+                  <div class="ba-placeholder-content">
+                    <!-- <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                    <span>After Photo</span>
+                    <small>Add Image</small> -->
+                    <img
+                      src="./WhatsApp Image 2026-09-12 at 12.02.08 (2).jpeg"
+                      alt=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="compact-review-content">
+                <div class="compact-meta">
+                  <span class="compact-tag">20 Weeks • Lean Muscle Gain</span>
+                  <span class="stars">★★★★★</span>
+                </div>
+                <p class="compact-quote">
+                  "Clear workout plans and constant form feedback. Best decision
+                  I made for my overall physique."
+                </p>
+                <div class="compact-client-info">
+                  <strong>Dev S.</strong>
+                  <span>1:1 Coaching Client</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Compact Review Card 3 -->
+            <!-- <div class="compact-review-card">
+              <div class="before-after-compact">
+                <div class="ba-photo-box">
+                  <span class="ba-badge">BEFORE</span>
+                  <div class="ba-placeholder-content">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                    <span>Before Photo</span>
+                    <small>Add Image</small>
+                  </div>
+                </div>
+                <div class="ba-divider">VS</div>
+                <div class="ba-photo-box">
+                  <span class="ba-badge success">AFTER</span>
+                  <div class="ba-placeholder-content">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                    <span>After Photo</span>
+                    <small>Add Image</small>
+                  </div>
+                </div>
+              </div>
+              <div class="compact-review-content">
+                <div class="compact-meta">
+                  <span class="compact-tag">24 Weeks • Recomposition</span>
+                  <span class="stars">★★★★★</span>
+                </div>
+                <p class="compact-quote">
+                  "Learned proper progression and consistency. The weekly
+                  check-ins kept me on target without stress."
+                </p>
+                <div class="compact-client-info">
+                  <strong>Vikram T.</strong>
+                  <span>1:1 Coaching Client</span>
+                </div>
+              </div>
+            </div>
+
+            
+            <div class="compact-review-card">
+              <div class="before-after-compact">
+                <div class="ba-photo-box">
+                  <span class="ba-badge">BEFORE</span>
+                  <div class="ba-placeholder-content">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                    <span>Before Photo</span>
+                    <small>Add Image</small>
+                  </div>
+                </div>
+                <div class="ba-divider">VS</div>
+                <div class="ba-photo-box">
+                  <span class="ba-badge success">AFTER</span>
+                  <div class="ba-placeholder-content">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                      />
+                    </svg>
+                    <span>After Photo</span>
+                    <small>Add Image</small>
+                  </div>
+                </div>
+              </div>
+              <div class="compact-review-content">
+                <div class="compact-meta">
+                  <span class="compact-tag">10 Weeks • Strength & Tone</span>
+                  <span class="stars">★★★★★</span>
+                </div>
+                <p class="compact-quote">
+                  "Simple, logical guidance. No fancy gimmicks, just solid
+                  training principles that deliver."
+                </p>
+                <div class="compact-client-info">
+                  <strong>Ankit S.</strong>
+                  <span>1:1 Coaching Client</span>
+                </div>
+              </div>
+            </div> -->
+          </div>
         </div>
       </section>
 
